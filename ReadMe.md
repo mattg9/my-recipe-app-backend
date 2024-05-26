@@ -33,9 +33,11 @@ This is the backend for the Recipe App project. It is built with Django and prov
     ```
 
 ## Running the Server
-To start the deployment server, run:
+- To start the deployment server, run:
+    
     ```bash
     python manage.py runserver
     ```
-    The server will start at `http://localhost:8000/`
+
+- The server will start at `http://localhost:8000/`
 
