@@ -1,0 +1,4 @@
+# requirements.txt
+Django
+djangorestframework
+django-cors-headers
