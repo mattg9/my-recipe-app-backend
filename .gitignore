@@ -1,0 +1,53 @@
+# General
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+*.env
+*.DS_Store
+
+# Django specific
+/static/
+media/
+db.sqlite3
+
+# If using PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Temporary files
+tmp/
+temp/
+
+# Coverage
+coverage/
+*.lcov
+
+# Production environment variables
+.env.production
+
+# Local environment variables
+.env.local
+
+# Test environment variables
+.env.test
+
+# macOS
+*.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
