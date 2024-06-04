@@ -19,24 +19,4 @@ class RecipeCreateView(generics.ListCreateAPIView):
 
 class RecipeRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Recipe.objects.all()
-    lookup_field = 'id'
     serializer_class = RecipeSerializer
-
-    def delete(self, request, *args, **kwargs):
-        recipe_id = request.data.get('id')
-        response = super().delete(request, *args, **kwargs)
-        if (response.status_code == 204):
-            from django.core.cache import cache
-            cache.delete(f"recipe_data_${recipe_id}")
-        return response
-    
-    def update(self, request, *args, **kwargs):
-        response = super().update(request, *args, **kwargs)
-        if (response.status_code == 200):
-            from django.core.cache import cache
-            recipe = response.data
-            cache.set(f"recipe_data_${recipe['id']}", {
-                'title' : recipe['title'],
-                'description' : recipe['description']
-            })
-        return response
