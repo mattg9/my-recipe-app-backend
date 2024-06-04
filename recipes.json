@@ -1,0 +1,14 @@
+[
+    {
+      "model": "recipes.recipe",
+      "pk": 1,
+      "fields": {
+        "title": "Tomato Basil Pasta",
+        "ingredients": "Spaghetti or pasta of your choice\nFresh tomatoes, diced\nFresh basil leaves, chopped",
+        "instructions": "Cook pasta according to package instructions.\nDrain pasta and return it to the pot.\nStir in diced tomatoes and chopped basil.\nHeat through over low heat for a few minutes.\nSeason with salt and pepper, and serve.",
+        "prep_time": "00:20:00",
+        "cook_time": "00:30:00",
+        "servings": 3
+      }
+    }
+  ]

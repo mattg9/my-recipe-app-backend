@@ -1,7 +1,9 @@
 from rest_framework.test import APITestCase
 from .models import Recipe
 
-class RecipeCreateTestCase(APITestCase):
+class RecipeCreateTestCases(APITestCase):
+
+    fixtures = ['recipes.json']
 
     def test_create_recipe(self):
         recipe_count = Recipe.objects.count()
@@ -23,3 +25,19 @@ class RecipeCreateTestCase(APITestCase):
         for attr, expected_value in recipe_attrs.items():
             self.assertEqual(response.data[attr], expected_value)
         self.assertEqual(response.data['servings'], 1)
+
+    def test_delete_recipe(self):
+        recipe_count = Recipe.objects.count()
+        recipe_id = Recipe.objects.first().id
+        response = self.client.delete(f"/api/recipes/{recipe_id}/")
+        if (response.status_code != 204):
+            print(response.status_code)
+        self.assertEqual(
+            Recipe.objects.count(),
+            recipe_count - 1
+        )
+        self.assertRaises(
+            Recipe.DoesNotExist,
+            Recipe.objects.get, id=recipe_id
+        )
+    
