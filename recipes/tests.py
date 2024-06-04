@@ -41,3 +41,24 @@ class RecipeCreateTestCases(APITestCase):
             Recipe.objects.get, id=recipe_id
         )
     
+    def test_get_recipes(self):
+        recipe_count = Recipe.objects.count()
+        response = self.client.get('/api/recipes/')
+        self.assertEqual(response.status_code , 200)
+        self.assertIsNone(response.data['next'])
+        self.assertIsNone(response.data['previous'])
+        self.assertEqual(response.data['count'], recipe_count)
+        self.assertEqual(len(response.data['results']), recipe_count)
+
+    def test_update_recipe(self):
+        recipe = Recipe.objects.first()
+        recipe_attrs = {
+            'title' : 'New Recipe Name',
+            'ingredients' : 'My\nNew\nList\nOf\nIngredients',
+            'instructions' :'My\nNew\nInstructions'
+        }
+        response = self.client.patch(f"/api/recipes/{recipe.id}/", recipe_attrs, format='json')
+        self.assertEqual(response.status_code , 200)
+        updated = Recipe.objects.get(id=recipe.id)
+        for attr, expected_value in recipe_attrs.items():
+            self.assertEqual(getattr(updated, attr), expected_value)
