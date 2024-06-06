@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-CORS_ORIGIN_WHITELIST = [
+CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',  # Vue.js development server
 ]
 
