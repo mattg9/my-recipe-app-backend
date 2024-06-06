@@ -73,7 +73,7 @@ TEMPLATES = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8000',  # Vue.js development server
+    'http://localhost:8080',  # Vue.js development server
 ]
 
 WSGI_APPLICATION = 'recipe_app_backend.wsgi.application'
